@@ -24,17 +24,14 @@ int main() {
     }
 
     // access the map using iterators
-    cout << "\nVillagers and their favorite colors (iterators):" << endl;
+    cout << "\nVillagers and their details (iterators):" << endl;
     for (map<string, tuple<int, string, string>>::iterator it = villagerDetails.begin(); 
                                                it != villagerDetails.end(); ++it) 
     {
-        string name = it->first; // key
-        tuple<int, string, string> details = it->second; // value
+        const string& name = it->first;
+        auto [friendship, species, catchphrase] = it->second;
 
-        cout << it->first << ": ";
-        for (auto color : it->second) {
-            cout << color << " ";
-        }
+        cout << name << " [" << friendship << ", " << species << ", " << catchphrase << "]";
         cout << endl;
     }
 
@@ -42,21 +39,21 @@ int main() {
     villagerDetails.erase("Raymond");
 
     // search for an element using .find() to avoid errors
-    string searchKey = "Audie";
+    string searchKey = "Kyle";
     auto it = villagerDetails.find(searchKey);
     if (it != villagerDetails.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
-        for (auto color : it->second)  // range loop to traverse the value/vector
-            cout << color << " ";
+        cout << "\nFound " << searchKey << "'s details: ";
+        auto [friendship, species, catchphrase] = it->second;
+        cout << " [" << friendship << ", " << species << ", " << catchphrase << "]";
         cout << endl;
     } else
         cout << endl << searchKey << " not found." << endl;
 
     // report size, clear, report size again to confirm map operations
-    cout << "\nSize before clear: " << villagerColors.size() << endl;
-    villagerColors.clear();
-    cout << "Size after clear: " << villagerColors.size() << endl;
+    cout << "\nSize before clear: " << villagerDetails.size() << endl;
+    villagerDetails.clear();
+    cout << "Size after clear: " << villagerDetails.size() << endl;
 
     return 0;
 }
