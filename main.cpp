@@ -149,6 +149,7 @@ int main()
             }
         }
 
+        // Print all villagers' details in the map
         cout << "Villagers and their details (iterators):" << endl;
         for (map<string, tuple<int, string, string>>::iterator it = villagerDetails.begin(); 
                                                 it != villagerDetails.end(); ++it) 
