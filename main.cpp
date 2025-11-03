@@ -4,7 +4,8 @@
 #include <tuple>
 using namespace std;
 
-int main() {
+int main() 
+{
     // declarations
     map<string, tuple<int, string, string>> villagerDetails; // Define map of string and tuple
 
@@ -16,9 +17,8 @@ int main() {
 
     int choice;
     string villagerName;
-    bool isExit = false;
 
-    while (isExit == false)
+    while (true)
     {
         cout << "1. Increase Friendship" << endl;
         cout << "2. Decrease Friendship" << endl;
@@ -26,44 +26,43 @@ int main() {
         cout << "4. Exit" << endl;
 
         cin >> choice;
-
-        switch (choice)
+        if (choice == 4)
         {
-            case 1:
+            break;
+        }
+
+        cout << endl;
+        cout << "Please enter villager's name: ";
+        cin >> villagerName;
+
+        auto it = villagerDetails.find(villagerName);
+        if (it == villagerDetails.end()) 
+        {  
+            cout << endl << villagerName << " not found." << endl;
+        }
+        else
+        {
+            auto [friendship, species, catchphrase] = it->second;
+            switch (choice)
             {
-                
-                break;
-            }
-            case 2:
-            {
-                break;
-            }
-            case 3:
-            {
-                cout << endl;
-                cout << "Please enter villager's name: ";
-                cin >> villagerName;;
-                auto it = villagerDetails.find(villagerName);
-                if (it != villagerDetails.end()) {  // the iterator points to beyond the end of the map
-                                                // if searchKey is not found
+                case 1:
+                {
+                    
+                    break;
+                }
+                case 2:
+                {
+                    break;
+                }
+                case 3:
+                {
                     cout << "\nFound " << villagerName << "'s details: ";
-                    auto [friendship, species, catchphrase] = it->second;
                     cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
                     cout << endl;
-                } 
-                else
-                {
-                    cout << endl << villagerName << " not found." << endl;
+                    cout << endl;
+
+                    break;
                 }
-
-                cout << endl;
-
-                break;
-            }
-            case 4:
-            {
-                isExit = true;
-                break;
             }
         }
     }
