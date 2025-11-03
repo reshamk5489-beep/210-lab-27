@@ -15,7 +15,7 @@ int main()
     villagerDetails["Kyle"] = {10, "Wolf", "Hubba hubba!"};
     villagerDetails.insert({"Raymond", {8, "Cat", "Nice fit"}});
 
-    int choice;
+    int choice; // user choice
     string villagerName;
 
     while (true)
