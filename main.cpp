@@ -22,43 +22,51 @@ int main()
         cout << "3. Increase Friendship" << endl;
         cout << "4. Decrease Friendship" << endl;
         cout << "5. Search for Villager" << endl;
-        cout << "6. Exit" << endl;
+        cout << "6. Exit" << endl << endl;
 
+        cout << "Enter Choice: ";
         cin >> choice;
         if (choice == 6)
         {
             break;
         }
-
-        cout << endl;
-        cout << "Please enter villager's name: ";
-        cin >> villagerName;
-        cout << endl;
-
         
         switch (choice)
         {
             case 1:
             {
-                cout << "Please enter friendship level: ";
+                cout << "Villager name: ";
+                cin >> villagerName;
+                cout << "Friendship level: ";
                 cin >> friendship;
-                cout << "Please enter species: ";
+                cout << "Species: ";
                 cin >> species;
-                cout << "Please enter catchphrase: ";
+                cout << "Catchphrase: ";
+                cin.ignore();
                 getline(cin, catchphrase);
 
                 villagerDetails.insert({villagerName, {friendship, species, catchphrase}});
+
+                cout << villagerName << " added." << endl << endl;
     
                 break;
             }
             case 2:
             {
+                cout << "Villager name: ";
+                cin >> villagerName;
+
                 villagerDetails.erase(villagerName);
+
+                cout << villagerName << " deleted." << endl << endl;
                                     
                 break;
             }
             case 3:
             {
+                cout << "Villager name: ";
+                cin >> villagerName;
+                
                 auto it = villagerDetails.find(villagerName);
                 if (it == villagerDetails.end()) 
                 {  
@@ -82,6 +90,9 @@ int main()
             }
             case 4:
             {
+                cout << "Villager name: ";
+                cin >> villagerName;
+
                 auto it = villagerDetails.find(villagerName);
                 if (it == villagerDetails.end()) 
                 {  
@@ -105,6 +116,9 @@ int main()
             }
             case 5:
             {
+                cout << "Villager name: ";
+                cin >> villagerName;
+
                 auto it = villagerDetails.find(villagerName);
                 if (it == villagerDetails.end()) 
                 {  
