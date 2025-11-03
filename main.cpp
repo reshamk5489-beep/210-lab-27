@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     // declarations
-    map<string, tuple<int, string, string>> villagerDetails;
+    map<string, tuple<int, string, string>> villagerDetails; // Define map of string and tuple
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
