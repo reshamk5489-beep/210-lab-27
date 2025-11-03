@@ -38,24 +38,37 @@ int main()
         auto it = villagerDetails.find(villagerName);
         if (it == villagerDetails.end()) 
         {  
-            cout << endl << villagerName << " not found." << endl;
+            cout << endl << villagerName << " not found." << endl << endl;
         }
         else
         {
-            auto [friendship, species, catchphrase] = it->second;
             switch (choice)
             {
                 case 1:
                 {
-                    
+                    get<0>(it->second)++; 
+                    auto [friendship, species, catchphrase] = it->second;
+                    cout << "\n" << villagerName << "'s details: ";
+                    cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
+                    cout << endl;
+                    cout << endl;
+
                     break;
                 }
                 case 2:
                 {
+                    get<0>(it->second)--; 
+                    auto [friendship, species, catchphrase] = it->second;
+                    cout << "\n" << villagerName << "'s details: ";
+                    cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
+                    cout << endl;
+                    cout << endl;
+                                       
                     break;
                 }
                 case 3:
                 {
+                    auto [friendship, species, catchphrase] = it->second;
                     cout << "\nFound " << villagerName << "'s details: ";
                     cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
                     cout << endl;
@@ -65,15 +78,6 @@ int main()
                 }
             }
         }
-    }
-
-    // access the map using a range-based for loop
-    cout << "Villagers and their details (range-based for loop):" << endl;
-    for (const auto& [name, details] : villagerDetails) 
-    {
-        auto [friendship, species, catchphrase] = details;       
-        cout << name << " [" << friendship << ", " << species << ", " << catchphrase << "]";
-        cout << endl;
     }
 
     // report size, clear, report size again to confirm map operations
