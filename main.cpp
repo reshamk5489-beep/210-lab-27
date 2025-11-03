@@ -6,15 +6,17 @@ using namespace std;
 
 int main() 
 {
-    // declarations
-    map<string, tuple<int, string, string>> villagerDetails; // Define map of string and tuple
+    // Comment #1: Create a map to store villager details keyed by name
+    map<string, tuple<int, string, string>> villagerDetails; 
 
-    int choice; // user choice
+    // Comment #2: Variables to temporarily hold user input
+    int choice;
     string villagerName;
     int friendship;
     string species;
     string catchphrase;
 
+    // Comment #3: Menu loop runs until user chooses to exit
     while (true)
     {
         cout << "1. Add Villager" << endl;
@@ -26,6 +28,8 @@ int main()
 
         cout << "Enter Choice: ";
         cin >> choice;
+
+        // Comment #4: Exit program if user selects option 6
         if (choice == 6)
         {
             break;
@@ -35,6 +39,7 @@ int main()
         {
             case 1:
             {
+                // Comment #5: Input villager info and insert into map
                 cout << "Villager name: ";
                 cin >> villagerName;
                 cout << "Friendship level: ";
@@ -53,6 +58,7 @@ int main()
             }
             case 2:
             {
+                // Comment #6: Remove villager by name
                 cout << "Villager name: ";
                 cin >> villagerName;
 
@@ -64,16 +70,19 @@ int main()
             }
             case 3:
             {
+                // Comment #7: Increase friendship level if villager exists
                 cout << "Villager name: ";
                 cin >> villagerName;
                 
                 auto it = villagerDetails.find(villagerName);
                 if (it == villagerDetails.end()) 
                 {  
+                    // Comment #8: Villager not found case
                     cout << villagerName << " not found." << endl << endl;
                 }
                 else
                 {
+                    // Comment #9: Only increment if friendship < 10
                     if (get<0>(it->second) < 10)
                     {
                         get<0>(it->second)++; 
@@ -90,6 +99,7 @@ int main()
             }
             case 4:
             {
+                // Comment #10: Decrease friendship level if villager exists
                 cout << "Villager name: ";
                 cin >> villagerName;
 
@@ -100,6 +110,7 @@ int main()
                 }
                 else
                 {
+                    // Comment #11: Prevent friendship from going below 0
                     if (get<0>(it->second) > 0)
                     {
                         get<0>(it->second)--;
@@ -116,6 +127,7 @@ int main()
             }
             case 5:
             {
+                // Comment #12: Search and display villager details
                 cout << "Villager name: ";
                 cin >> villagerName;
 
