@@ -148,12 +148,20 @@ int main()
                 break;
             }
         }
-    }
 
-    // report size, clear, report size again to confirm map operations
-    cout << "\nSize before clear: " << villagerDetails.size() << endl;
-    villagerDetails.clear();
-    cout << "Size after clear: " << villagerDetails.size() << endl;
+        cout << "Villagers and their details (iterators):" << endl;
+        for (map<string, tuple<int, string, string>>::iterator it = villagerDetails.begin(); 
+                                                it != villagerDetails.end(); ++it) 
+        {
+            const string& name = it->first;
+            auto [friendship, species, catchphrase] = it->second;
+
+            cout << name << " [" << friendship << ", " << species << ", " << catchphrase << "]";
+            cout << endl;
+        }
+        
+        cout << endl;
+    }
 
     return 0;
 }
