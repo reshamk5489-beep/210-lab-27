@@ -9,24 +9,20 @@ int main()
     // declarations
     map<string, tuple<int, string, string>> villagerDetails; // Define map of string and tuple
 
-    // insert elements into the map
-    // note how the right-hand side of the assignment are the vector elements
-    villagerDetails["Drago"] = {5, "Alligator", "Snap to It!"};
-    villagerDetails["Kyle"] = {10, "Wolf", "Hubba hubba!"};
-    villagerDetails.insert({"Raymond", {8, "Cat", "Nice fit"}});
-
     int choice; // user choice
     string villagerName;
 
     while (true)
     {
-        cout << "1. Increase Friendship" << endl;
-        cout << "2. Decrease Friendship" << endl;
-        cout << "3. Search for Villager" << endl;
-        cout << "4. Exit" << endl;
+        cout << "1. Add Villager" << endl;
+        cout << "2. Delete Villager" << endl;
+        cout << "3. Increase Friendship" << endl;
+        cout << "4. Decrease Friendship" << endl;
+        cout << "5. Search for Villager" << endl;
+        cout << "6. Exit" << endl;
 
         cin >> choice;
-        if (choice == 4)
+        if (choice == 6)
         {
             break;
         }
@@ -36,15 +32,28 @@ int main()
         cin >> villagerName;
 
         auto it = villagerDetails.find(villagerName);
-        if (it == villagerDetails.end()) 
-        {  
-            cout << endl << villagerName << " not found." << endl << endl;
-        }
-        else
+        
+        switch (choice)
         {
-            switch (choice)
+            case 1:
             {
-                case 1:
+                villagerDetails
+    
+                break;
+            }
+            case 2:
+            {
+                
+                                    
+                break;
+            }
+            case 3:
+            {
+                if (it == villagerDetails.end()) 
+                {  
+                    cout << endl << villagerName << " not found." << endl << endl;
+                }
+                else
                 {
                     if (get<0>(it->second) < 10)
                     {
@@ -56,10 +65,17 @@ int main()
                     cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
                     cout << endl;
                     cout << endl;
-        
-                    break;
                 }
-                case 2:
+
+                break;
+            }
+            case 4:
+            {
+                if (it == villagerDetails.end()) 
+                {  
+                    cout << endl << villagerName << " not found." << endl << endl;
+                }
+                else
                 {
                     if (get<0>(it->second) > 0)
                     {
@@ -71,19 +87,26 @@ int main()
                     cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
                     cout << endl;
                     cout << endl;
-                                       
-                    break;
                 }
-                case 3:
+
+                break;
+            }
+            case 5:
+            {
+                if (it == villagerDetails.end()) 
+                {  
+                    cout << endl << villagerName << " not found." << endl << endl;
+                }
+                else
                 {
                     auto [friendship, species, catchphrase] = it->second;
                     cout << "\nFound " << villagerName << "'s details: ";
                     cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
                     cout << endl;
                     cout << endl;
-
-                    break;
                 }
+
+                break;
             }
         }
     }
