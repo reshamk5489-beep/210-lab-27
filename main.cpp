@@ -11,6 +11,9 @@ int main()
 
     int choice; // user choice
     string villagerName;
+    int friendship;
+    string species;
+    string catchphrase;
 
     while (true)
     {
@@ -30,28 +33,36 @@ int main()
         cout << endl;
         cout << "Please enter villager's name: ";
         cin >> villagerName;
+        cout << endl;
 
-        auto it = villagerDetails.find(villagerName);
         
         switch (choice)
         {
             case 1:
             {
-                villagerDetails
+                cout << "Please enter friendship level: ";
+                cin >> friendship;
+                cout << "Please enter species: ";
+                cin >> species;
+                cout << "Please enter catchphrase: ";
+                getline(cin, catchphrase);
+
+                villagerDetails.insert({villagerName, {friendship, species, catchphrase}});
     
                 break;
             }
             case 2:
             {
-                
+                villagerDetails.erase(villagerName);
                                     
                 break;
             }
             case 3:
             {
+                auto it = villagerDetails.find(villagerName);
                 if (it == villagerDetails.end()) 
                 {  
-                    cout << endl << villagerName << " not found." << endl << endl;
+                    cout << villagerName << " not found." << endl << endl;
                 }
                 else
                 {
@@ -61,7 +72,7 @@ int main()
                     }
 
                     auto [friendship, species, catchphrase] = it->second;
-                    cout << "\n" << villagerName << "'s details: ";
+                    cout << villagerName << "'s details: ";
                     cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
                     cout << endl;
                     cout << endl;
@@ -71,9 +82,10 @@ int main()
             }
             case 4:
             {
+                auto it = villagerDetails.find(villagerName);
                 if (it == villagerDetails.end()) 
                 {  
-                    cout << endl << villagerName << " not found." << endl << endl;
+                    cout << villagerName << " not found." << endl << endl;
                 }
                 else
                 {
@@ -83,7 +95,7 @@ int main()
                     }
 
                     auto [friendship, species, catchphrase] = it->second;
-                    cout << "\n" << villagerName << "'s details: ";
+                    cout << villagerName << "'s details: ";
                     cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
                     cout << endl;
                     cout << endl;
@@ -93,14 +105,15 @@ int main()
             }
             case 5:
             {
+                auto it = villagerDetails.find(villagerName);
                 if (it == villagerDetails.end()) 
                 {  
-                    cout << endl << villagerName << " not found." << endl << endl;
+                    cout << villagerName << " not found." << endl << endl;
                 }
                 else
                 {
                     auto [friendship, species, catchphrase] = it->second;
-                    cout << "\nFound " << villagerName << "'s details: ";
+                    cout << "Found " << villagerName << "'s details: ";
                     cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
                     cout << endl;
                     cout << endl;
