@@ -46,18 +46,26 @@ int main()
             {
                 case 1:
                 {
-                    get<0>(it->second)++; 
+                    if (get<0>(it->second) < 10)
+                    {
+                        get<0>(it->second)++; 
+                    }
+
                     auto [friendship, species, catchphrase] = it->second;
                     cout << "\n" << villagerName << "'s details: ";
                     cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
                     cout << endl;
                     cout << endl;
-
+        
                     break;
                 }
                 case 2:
                 {
-                    get<0>(it->second)--; 
+                    if (get<0>(it->second) > 0)
+                    {
+                        get<0>(it->second)--;
+                    }
+
                     auto [friendship, species, catchphrase] = it->second;
                     cout << "\n" << villagerName << "'s details: ";
                     cout << "[" << friendship << ", " << species << ", " << catchphrase << "]";
